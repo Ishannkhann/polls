@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const getPolls = async () => {
       const { data: response } = await Axios.get(
-        "http://dev-polls.pantheonsite.io/jsonapi/node/poll?include=field_options&fields[node--options]=field_votes,title"
+        "https://dev-polls.pantheonsite.io/jsonapi/node/poll?include=field_options&fields[node--options]=field_votes,title"
       );
       const normalizedPolls = normalize(response).get([
         "id",
@@ -31,7 +31,7 @@ function App() {
   const vote = async (id, currentVotes) => {
     setLoading(true);
     await Axios.patch(
-      `http://dev-polls.pantheonsite.io/jsonapi/node/option/${id}`,
+      `https://dev-polls.pantheonsite.io/jsonapi/node/option/${id}`,
       {
         data: {
           type: "node--option",
