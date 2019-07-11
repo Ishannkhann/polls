@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import normalize from "json-api-normalize";
-import { Bar } from "react-chartjs";
+import {
+  BarChart,
+  Bar,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend
+} from "recharts";
+import "./App.css";
 
 function App() {
   const [polls, setPolls] = useState(null);
@@ -61,36 +70,48 @@ function App() {
     return data.map(i => i.attributes.field_votes);
   };
 
+  const getData = data => {
+    return data.map(o => ({
+      name: o.attributes.title,
+      votes: o.attributes.field_votes[0]
+    }));
+  };
+
   return (
     <div className='App'>
       <h1>Polls</h1>
       <ul>
         {polls.map(p => (
           <li key={p.id}>
-            <h4>{p.title}</h4>
-            {p.field_options &&
-              p.field_options.dataset.data.map(o => (
-                <div key={o.id}>
-                  <p>
-                    {o.attributes.title}{" "}
-                    <button
-                      onClick={() => vote(o.id, o.attributes.field_votes)}
-                      disabled={loading}
-                    >
-                      {o.attributes.field_votes}
-                    </button>
-                  </p>
-                </div>
-              ))}
+            <div>
+              <h4>{p.title}</h4>
+              {p.field_options &&
+                p.field_options.dataset.data.map(o => (
+                  <div key={o.id} className='poll-option'>
+                    <p>
+                      <button
+                        onClick={() => vote(o.id, o.attributes.field_votes)}
+                        disabled={loading}
+                      >
+                        {o.attributes.title}
+                      </button>
+                    </p>
+                  </div>
+                ))}
+            </div>
 
-            <hr />
-
-            <Bar
-              data={{
-                labels: getLabels(p.field_options.dataset.data),
-                datasets: [{ data: getVotes(p.field_options.dataset.data) }]
-              }}
-            />
+            <BarChart
+              width={500}
+              height={250}
+              data={getData(p.field_options.dataset.data)}
+            >
+              <CartesianGrid strokeDasharray='3 3' />
+              <XAxis dataKey='name' />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey='votes' fill='#8884d8' />
+            </BarChart>
           </li>
         ))}
       </ul>
