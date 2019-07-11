@@ -1,0 +1,17 @@
+uuid: 667c60f9-65ed-4620-b6b1-46c0484d91cd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access polls'
+  - 'access site-wide contact form'
+  - 'search content'
+  - 'use text format restricted_html'

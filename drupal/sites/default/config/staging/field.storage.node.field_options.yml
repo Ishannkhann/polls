@@ -1,0 +1,19 @@
+uuid: 9d1605c9-c196-4132-b6d3-6c37a30c86e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_options
+field_name: field_options
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 4
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

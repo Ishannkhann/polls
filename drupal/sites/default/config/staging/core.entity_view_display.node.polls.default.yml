@@ -1,0 +1,29 @@
+uuid: 90f39da7-5094-49cc-a5f2-0a6428103895
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.polls.field_options
+    - node.type.polls
+  module:
+    - user
+id: node.polls.default
+targetEntityType: node
+bundle: polls
+mode: default
+content:
+  field_options:
+    weight: 101
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

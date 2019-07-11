@@ -1,0 +1,25 @@
+uuid: ddcc5302-1134-44e8-88a3-0004c3e02150
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_votes
+    - node.type.options
+id: node.options.field_votes
+field_name: field_votes
+entity_type: node
+bundle: options
+label: Votes
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

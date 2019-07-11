@@ -1,0 +1,20 @@
+uuid: 47553b41-f9a8-424d-954a-01f35d219d96
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_votes
+field_name: field_votes
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: 95c0ff61-dd7b-4a36-88cb-0161506a77ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - poll
+    - serialization
+    - user
+id: entity.poll_choice
+plugin_id: 'entity:poll_choice'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

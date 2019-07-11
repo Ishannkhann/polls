@@ -1,0 +1,20 @@
+uuid: 5ae21952-9410-491c-9a68-565c8960e1b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.polls
+  module:
+    - user
+id: node.polls.teaser
+targetEntityType: node
+bundle: polls
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

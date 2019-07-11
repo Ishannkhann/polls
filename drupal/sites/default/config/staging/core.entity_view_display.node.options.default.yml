@@ -1,0 +1,29 @@
+uuid: c2d71cc3-f4e0-4ead-bc0c-f30bc3224713
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.options.field_votes
+    - node.type.options
+  module:
+    - user
+id: node.options.default
+targetEntityType: node
+bundle: options
+mode: default
+content:
+  field_votes:
+    weight: 101
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

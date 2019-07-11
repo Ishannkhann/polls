@@ -1,0 +1,18 @@
+uuid: 5b9ba54e-2f9d-439a-af14-e68069201b0c
+langcode: en
+status: true
+dependencies:
+  module:
+    - poll
+    - serialization
+    - user
+id: entity.poll
+plugin_id: 'entity:poll'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie
