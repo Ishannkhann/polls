@@ -8,7 +8,8 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 import "./App.css";
 
@@ -16,8 +17,12 @@ function App() {
   const [polls, setPolls] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(0);
+  const [orientation, setOrientation] = useState("vertical");
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      setOrientation("horizontal");
+    }
     const getPolls = async () => {
       const { data: response } = await Axios.get(
         "https://dev-polls.pantheonsite.io/jsonapi/node/poll?include=field_options&fields[node--options]=field_votes,title"
@@ -80,9 +85,9 @@ function App() {
   return (
     <div className='App'>
       <h1>Polls</h1>
-      <ul>
+      <ul className='polls-container'>
         {polls.map(p => (
-          <li key={p.id}>
+          <li className='polls-item' key={p.id}>
             <div>
               <h4>{p.title}</h4>
               {p.field_options &&
@@ -90,6 +95,7 @@ function App() {
                   <div key={o.id} className='poll-option'>
                     <p>
                       <button
+                        className='buttons'
                         onClick={() => vote(o.id, o.attributes.field_votes)}
                         disabled={loading}
                       >
@@ -100,18 +106,18 @@ function App() {
                 ))}
             </div>
 
-            <BarChart
-              width={500}
-              height={250}
-              data={getData(p.field_options.dataset.data)}
-            >
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey='name' />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey='votes' fill='#8884d8' />
-            </BarChart>
+            <div style={{ width: "90%", height: 300 }}>
+              <ResponsiveContainer>
+                <BarChart data={getData(p.field_options.dataset.data)}>
+                  <CartesianGrid strokeDasharray='3 3' />
+                  <XAxis dataKey='name' interval={0} />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey='votes' fill='#8884d8' />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </li>
         ))}
       </ul>
